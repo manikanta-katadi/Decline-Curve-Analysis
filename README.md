@@ -1,4 +1,4 @@
-# README –Decline Curve Analysis (DCA) of an Oil Well
+Decline Curve Analysis (DCA) of an Oil Well
 
 ## Project Overview
 
