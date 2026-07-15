@@ -2,251 +2,214 @@
 
 ## Project Overview
 
-This project involved performing Decline Curve Analysis (DCA) on historical oil well production data to evaluate production performance, compare Arps decline models, forecast future oil production, estimate the productive life of the well, and calculate the Estimated Ultimate Recovery (EUR). The complete workflow was implemented in Python using Jupyter Notebook during my Summer Internship at ONGC – Institute of Reservoir Studies (IRS), Ahmedabad.
+This project demonstrates the application of **Arps Decline Curve Analysis (DCA)** to historical oil well production data for evaluating production performance, comparing decline models, forecasting future production, estimating the productive life of the well, and calculating the **Estimated Ultimate Recovery (EUR)**. The complete workflow was implemented in **Python** using **Jupyter Notebook** as part of my Summer Internship at **ONGC – Institute of Reservoir Studies (IRS), Ahmedabad**.
 
-------------------------------------------------------------
+> **Note:** The original production dataset is **not included** in this repository due to confidentiality requirements.
 
-## Project Objective
+---
+
+## Objectives
 
 - Analyze historical oil well production data.
-- Apply Arps Decline Curve Analysis (DCA).
-- Compare Exponential, Hyperbolic, and Harmonic decline models.
-- Select the best-fit decline model using statistical evaluation.
-- Forecast future production until the economic limit.
+- Implement Arps Exponential, Hyperbolic, and Harmonic decline models.
+- Estimate decline parameters using nonlinear regression.
+- Compare model performance using statistical evaluation metrics.
+- Forecast future oil production until the economic limit.
 - Estimate Estimated Ultimate Recovery (EUR).
-- Perform cumulative and yearly production analysis.
+- Visualize historical, forecast, cumulative, and yearly production trends.
 
-------------------------------------------------------------
+---
 
 ## Input Data
 
-Historical production dataset containing:
+The analysis is based on historical monthly production data containing:
 
-- Monthly Oil Production Rate
 - Production Time
+- Oil Production Rate
 - Water Cut
 - Gas-Oil Ratio (GOR)
 
-------------------------------------------------------------
+> **Note:** The original dataset is proprietary and has been excluded from this repository.
 
-## Software & Libraries
+---
 
-Software
+## Technologies Used
+
+### Programming Language
 - Python
+
+### Development Environment
 - Jupyter Notebook
 
-Libraries
+### Python Libraries
 - NumPy
 - Pandas
 - Matplotlib
-- SciPy (curve_fit)
+- SciPy (`scipy.optimize.curve_fit`)
 
-------------------------------------------------------------
+---
 
-## Complete Workflow
+## Methodology
 
-### 1. Data Preparation
+### 1. Historical Production Analysis
 
-- Imported and organized historical production data using Pandas.
-- Verified and prepared the dataset for decline curve analysis.
+- Imported and organized production data using Pandas.
+- Analyzed production behavior through:
+  - Oil Production Rate vs Time
+  - Water Cut vs Time
+  - Gas-Oil Ratio (GOR) vs Time
 
-------------------------------------------------------------
+### 2. Decline Curve Modeling
 
-### 2. Historical Production Analysis
-
-Performed production trend analysis by generating:
-
-- Oil Production Rate vs Time
-- Water Cut vs Time
-- Gas-Oil Ratio (GOR) vs Time
-
-Key Observations
-
-- Oil production continuously declined throughout the production period.
-- Water cut gradually increased, indicating increasing water production.
-- GOR initially increased and later declined, indicating changing production behavior during reservoir depletion.
-
-------------------------------------------------------------
-
-### 3. Arps Decline Curve Modeling
-
-Implemented all three classical Arps decline models:
+Implemented the three classical Arps decline models:
 
 - Exponential Decline
 - Hyperbolic Decline
 - Harmonic Decline
 
-Implemented mathematical rate-time equations for each model in Python.
+### 3. Parameter Estimation
 
-------------------------------------------------------------
+Estimated decline parameters using SciPy's nonlinear least-squares optimization (`curve_fit`).
 
-### 4. Decline Parameter Estimation
-
-Estimated model parameters using SciPy's nonlinear least-squares optimization (curve_fit).
-
-Estimated parameters:
+Estimated:
 
 - Initial Production Rate (qi)
 - Initial Nominal Decline Rate (Di)
 - Hyperbolic Decline Exponent (b)
 
-Applied parameter bounds during optimization to obtain physically realistic solutions.
+Applied parameter bounds to ensure physically realistic solutions.
 
-------------------------------------------------------------
+### 4. Model Evaluation
 
-### 5. Model Performance Evaluation
-
-Evaluated all decline models using:
+Compared all decline models using:
 
 - Coefficient of Determination (R²)
 - Root Mean Square Error (RMSE)
 
-Results
+### 5. Production Forecasting
 
-Exponential Decline
-- qi = 1413.69 BOPD
-- Di = 0.058460 month⁻¹
-- R² = 0.9789
-- RMSE = 44.46 BOPD
+Selected the best-fit model and forecasted oil production until the economic limit of **40 BOPD**.
 
-Hyperbolic Decline
-- qi = 1514.08 BOPD
-- Di = 0.082168 month⁻¹
-- b = 0.4800
-- R² = 0.9869
-- RMSE = 35.03 BOPD
+### 6. Reserve Estimation
 
-Harmonic Decline
-- qi = 1629.94 BOPD
-- Di = 0.122717 month⁻¹
-- R² = 0.9785
-- RMSE = 44.87 BOPD
-
-------------------------------------------------------------
-
-### 6. Model Selection
-
-Compared all decline models using R² and RMSE.
-
-Outcome
-
-- Hyperbolic Decline Model achieved the highest R² (0.9869).
-- Hyperbolic Decline Model achieved the lowest RMSE (35.03 BOPD).
-- Selected the Hyperbolic Decline Model for production forecasting.
-
-------------------------------------------------------------
-
-### 7. Production Forecasting
-
-Forecasted future oil production using the Hyperbolic Decline Model until the economic limit of 40 BOPD.
-
-Forecast Results
-
-- Estimated productive life ≈ 119 months.
-- Generated historical and forecast production profile.
-
-------------------------------------------------------------
-
-### 8. Estimated Ultimate Recovery (EUR)
-
-Calculated cumulative oil production by combining historical production and forecast production.
-
-Result
-
-- Estimated Ultimate Recovery (EUR) ≈ 892,716 STB.
-
-------------------------------------------------------------
-
-### 9. Engineering Analysis Performed
-
-Historical Production Analysis
-
-- Oil Production Rate Analysis
-- Water Cut Analysis
-- Gas-Oil Ratio Analysis
-
-Decline Curve Analysis
-
-- Exponential Decline Curve Fitting
-- Hyperbolic Decline Curve Fitting
-- Harmonic Decline Curve Fitting
-
-Model Evaluation
-
-- Statistical comparison of decline models
-- Comparison using qi, Di, b, R² and RMSE
-
-Production Forecasting
-
-- Historical + Forecast Production Profile
-- Forecast until Economic Limit
-
-Cumulative Production Analysis
+Calculated:
 
 - Historical Cumulative Production
 - Forecast Cumulative Production
 - Estimated Ultimate Recovery (EUR)
 
-Yearly Production Analysis
+### 7. Yearly Production Analysis
+
+Generated:
 
 - Yearly Average Oil Production Rate
 - Yearly Oil Production
 - Yearly Cumulative Oil Production
 
-------------------------------------------------------------
+---
 
-## Engineering Concepts Applied
+## Results
 
-- Decline Curve Analysis (DCA)
-- Arps Decline Models
-- Production Forecasting
-- Reservoir Performance Evaluation
-- Nonlinear Curve Fitting
-- Parameter Estimation
-- Statistical Model Validation
-- Model Selection using R² and RMSE
-- Estimated Ultimate Recovery (EUR)
-- Economic Limit Analysis
+| Model | qi (BOPD) | Di (/month) | b | R² | RMSE (BOPD) |
+|------|----------:|------------:|---:|------:|------------:|
+| Exponential | 1413.69 | 0.058460 | 0.0000 | 0.9789 | 44.46 |
+| Hyperbolic | 1514.08 | 0.082168 | 0.4800 | **0.9869** | **35.03** |
+| Harmonic | 1629.94 | 0.122717 | 1.0000 | 0.9785 | 44.87 |
+
+### Key Findings
+
+- The **Hyperbolic Decline Model** provided the best agreement with the historical production data.
+- Forecasted production until an economic limit of **40 BOPD**.
+- Estimated productive life of approximately **119 months**.
+- Estimated Ultimate Recovery (EUR) of approximately **892,716 STB**.
+
+---
+
+## Engineering Analysis Performed
+
+### Historical Production Analysis
+
+- Oil Production Rate Analysis
 - Water Cut Analysis
 - Gas-Oil Ratio Analysis
-- Cumulative Production Analysis
-- Yearly Production Analysis
 
-------------------------------------------------------------
+### Decline Curve Analysis
+
+- Exponential Decline Curve Fit
+- Hyperbolic Decline Curve Fit
+- Harmonic Decline Curve Fit
+
+### Model Comparison
+
+Compared decline models using:
+
+- Initial Production Rate (qi)
+- Initial Decline Rate (Di)
+- Hyperbolic Exponent (b)
+- Coefficient of Determination (R²)
+- Root Mean Square Error (RMSE)
+
+### Production Forecasting
+
+Generated:
+
+- Historical + Forecast Oil Production
+- Forecast until Economic Limit
+
+### Reserve Estimation
+
+Calculated:
+
+- Historical Cumulative Production
+- Forecast Cumulative Production
+- Estimated Ultimate Recovery (EUR)
+
+### Yearly Production Analysis
+
+Generated:
+
+- Yearly Average Oil Production Rate
+- Yearly Oil Production
+- Yearly Cumulative Oil Production
+
+---
 
 ## Technical Skills Demonstrated
 
-- Production Data Analysis
-- Reservoir Engineering Calculations
+- Decline Curve Analysis (DCA)
+- Reservoir Performance Evaluation
 - Production Forecasting
+- Estimated Ultimate Recovery (EUR)
+- Nonlinear Curve Fitting
 - Statistical Model Evaluation
-- Scientific Computing using Python
-- Data Processing using Pandas
+- Parameter Estimation
+- Data Analysis using Pandas
+- Scientific Computing using NumPy
 - Numerical Optimization using SciPy
 - Engineering Visualization using Matplotlib
 - Technical Report Writing
 
-------------------------------------------------------------
+---
 
-## Key Outcomes
+## Repository Structure
 
-- Successfully implemented Arps Decline Curve Analysis using Python.
-- Estimated decline parameters (qi, Di and b) through nonlinear regression.
-- Compared Exponential, Hyperbolic and Harmonic decline models using statistical performance metrics.
-- Identified the Hyperbolic Decline Model as the optimum forecasting model (R² = 0.9869, RMSE = 35.03 BOPD).
-- Forecasted oil production until the economic limit of 40 BOPD.
-- Estimated an Estimated Ultimate Recovery (EUR) of approximately 892,716 STB.
-- Generated professional engineering plots for production history, decline model fitting, production forecasting, cumulative production, water cut, GOR, and yearly production analysis.
-- Prepared a complete technical report including Problem Statement, Theory, Methodology, Results & Discussion, Conclusion, and References.
+```text
+Decline-Curve-Analysis/
+│
+├── DCA.ipynb
+└── README.md
+```
 
-------------------------------------------------------------
+---
 
-## Confidentiality Note
+## Confidentiality
 
-This project summary is intended only for resume preparation, interview discussion, and documentation of technical work performed during the internship.
+This repository demonstrates the engineering methodology, Python implementation, and analytical workflow developed during an industrial internship.
 
-The project description focuses on the engineering methodology, Python implementation, analytical workflow, and technical skills acquired during the internship. It does not contain any confidential ONGC information or proprietary reservoir data.
+To comply with confidentiality requirements:
 
-No raw production data, reservoir models, well identifiers, field names, asset-specific information, internal reports, or proprietary software outputs are included.
+- The original production dataset is **not included**.
+- No proprietary reservoir data, field names, well identifiers, asset-specific information, or internal company documents are shared.
+- Any notebook outputs containing confidential production data should be removed before publication.
 
-Any public sharing of this project should continue to exclude the original datasets and confidential information provided during the internship, in accordance with ONGC confidentiality requirements.
+This repository is intended solely to showcase the implementation of Decline Curve Analysis using Python for educational and portfolio purposes.
